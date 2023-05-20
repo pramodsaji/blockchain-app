@@ -1,0 +1,62 @@
+{
+    "contractName": "DocumentVerification",
+    "abi": [
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "documentHash",
+            "type": "string"
+          },
+          {
+            "name": "studentAddress",
+            "type": "address"
+          }
+        ],
+        "name": "submitDocument",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "documentHash",
+            "type": "string"
+          }
+        ],
+        "name": "verifyDocument",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ],
+    "networks": {
+      "5777": {
+        "events": {},
+        "links": {},
+        "address": "0x4c3B887c39FFC6a7F20F8c7c3d2a007B3982341c",
+        "transactionHash": "<deployment-transaction-hash>"
+      }
+    },
+    "bytecode": "<contract-bytecode>",
+    "deployedBytecode": "<deployed-contract-bytecode>",
+    "sourceMap": "<source-map>",
+    "deployedSourceMap": "<deployed-source-map>",
+    "source": "<contract-source-code>",
+    "sourcePath": "<contract-source-file-path>",
+    "ast": "<contract-ast>",
+    "compiler": {
+      "name": "solc",
+      "version": "<solc-version>"
+    },
+    "updatedAt": "<timestamp>"
+  }
