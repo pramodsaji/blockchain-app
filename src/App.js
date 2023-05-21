@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Web3 from "web3";
 import DocumentVerificationContract from "./contracts/DocumentVerificationContract.json";
-import { SHA256 } from 'crypto-js';
-import './App.css';
+import { SHA256 } from "crypto-js";
+import "./App.css";
 
 function App() {
-
-  const [name, setName] = useState("");
-  const [data, setData] = useState("");
-
   const [file, setFile] = useState();
-  const [sid, setSID] = useState('');
-  const [address, setAddress] = useState('');
+  const [sid, setSID] = useState("");
+  const [address, setAddress] = useState("");
 
   var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
 
@@ -24,20 +20,15 @@ function App() {
   }
 
   var contract = null;
-  // useEffect(() => {
-  //   loadBlockchainData();
-  // }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       // Perform form validation
       if (!validateSID(sid)) {
-        alert('Please enter a valid SID.');
+        alert("Please enter a valid SID.");
         return;
       }
-
-
 
       // Generate hash of sid and file content together
       const combinedData = `${sid}${getFileContent()}`;
@@ -50,16 +41,15 @@ function App() {
         DocumentVerificationContract.abi,
         deployedNetwork && deployedNetwork.address
       );
-        console.log(hash);
-        console.log(address);
-      const result = await contract.methods.submitDocument(hash, address).send({ from: "0x35219cb510424B83b1f37640C93802Aa536B9915",
-      gas: '1000000' });
-      console.log(result);
+
+      const result = await contract.methods.submitDocument(hash, address).send({
+        from: "0xf70c0B4CeaBAfCDbef68F853F19bC6E125D063eA",
+        gas: "1000000",
+      });
+      if (result.transactionHash) alert("Document added successfully");
     } catch (error) {
       console.error("Error retrieving data:", error);
     }
-
-
   };
 
   const validateSID = (sid) => {
@@ -71,7 +61,7 @@ function App() {
   function getFileContent() {
     return new Promise((resolve, reject) => {
       if (!file) {
-        reject(new Error('No file selected.'));
+        reject(new Error("No file selected."));
       }
 
       const fileReader = new FileReader();
@@ -80,11 +70,11 @@ function App() {
         resolve(fileContent);
       };
       fileReader.onerror = (e) => {
-        reject(new Error('Error reading the file.'));
+        reject(new Error("Error reading the file."));
       };
       fileReader.readAsText(file);
     });
-  };
+  }
 
   const handleUpload = async () => {
     const combinedData = `${sid}${getFileContent()}`;
@@ -97,60 +87,89 @@ function App() {
       DocumentVerificationContract.abi,
       deployedNetwork && deployedNetwork.address
     );
-
-    console.log('hash + ' + hash);
-
     const result = await contract.methods.verifyDocument(hash).call();
-    console.log('hi'+ result);
-  }
+    if (result) alert("Document is available and verified");
+    else alert("Document is not available");
+  };
 
-
-return (
-  <div className="container">
-    <div className="sub-container">
-      <h2>Student Information</h2>
-      {/* <form onSubmit={handleSubmit}> */}
-
-        <div className="form-group">
-          <label htmlFor="sid">SID:</label>
-          <input type="text" id="sid" name="sid" value={sid} onChange={handleSIDChange} />
-        </div>
+  return (
+    <div className="container">
+      <div className="sub-container">
+        <h2>EduDoc Chain</h2>
 
         <div className="form-group">
-          <label htmlFor="address">Address:</label>
-          <select id="address" name="address" value={address} onChange={(e) => setAddress(e.target.value)}>
-            <option value="">Select an address</option>
-            <option value="0x3e0604a8429bA70C19a7a5c728662dABe1F0969B">0x3e0604a8429bA70C19a7a5c728662dABe1F0969B</option>
-            <option value="0x82dAf97698cD8C022fD93FBC27ea3bF926A8CCa2">Address 2</option>
-            <option value="Address 3">Address 3</option>
-          </select>
-          <input type="file" name="file" onChange={handleFile} className="file-input" />
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label htmlFor="sid">SID:</label>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    id="sid"
+                    name="sid"
+                    value={sid}
+                    onChange={handleSIDChange}
+                  />
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label htmlFor="address">Address:</label>
+                </td>
+                <td>
+                  <select
+                    id="address"
+                    name="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  >
+                    <option value="">Select an address</option>
+                    <option value="0xDF94C0d81C174ba46c13789e39fb62D51bAa8732">
+                      0xDF94C0d81C174ba46c13789e39fb62D51bAa8732
+                    </option>
+                    <option value="0x778f86cc3c3636c810173592774368B95c773249">
+                      0x778f86cc3c3636c810173592774368B95c773249
+                    </option>
+                    <option value="0xc79b2800e254F9d778Aed1ef18f59F750E34C36f">
+                      0xc79b2800e254F9d778Aed1ef18f59F750E34C36f
+                    </option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label htmlFor="address">Document:</label>
+                </td>
+                <td>
+                  <input
+                    type="file"
+                    name="file"
+                    onChange={handleFile}
+                    className="file-input"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div className="login-button">
-          <button type="submit" onClick={handleSubmit}>Submit</button>
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
         </div>
 
-      {/* </form> */}
-
-      <div>
-        <h2>Verify File</h2>
-        {/* <form onClick={handleUpload}> */}
-          <input type="file" name="file" onChange={handleFile} className="file-input2" />
+        <div>
           <div className="login-button">
             <button onClick={handleUpload}>Verify</button>
           </div>
-        {/* </form> */}
+        </div>
       </div>
-
-
     </div>
-
-
-
-  </div>
-
-
-)
+  );
 }
 export default App;
