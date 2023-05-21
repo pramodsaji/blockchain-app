@@ -2,40 +2,143 @@
     "contractName": "DocumentVerification",
     "abi": [
       {
-        "constant": false,
         "inputs": [
           {
+            "internalType": "string",
             "name": "documentHash",
             "type": "string"
           },
           {
+            "internalType": "bool",
+            "name": "revoked",
+            "type": "bool"
+          }
+        ],
+        "name": "revokeDocument",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "documentHash",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
             "name": "studentAddress",
             "type": "address"
           }
         ],
         "name": "submitDocument",
         "outputs": [],
-        "payable": false,
         "stateMutability": "nonpayable",
         "type": "function"
       },
       {
-        "constant": false,
         "inputs": [
           {
+            "internalType": "string",
+            "name": "documentHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "updateHash",
+            "type": "string"
+          }
+        ],
+        "name": "updateDocument",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "name": "documents",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "studentAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "revoked",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "studentAddress",
+            "type": "address"
+          }
+        ],
+        "name": "getStudentsDocs",
+        "outputs": [
+          {
+            "internalType": "string[]",
+            "name": "",
+            "type": "string[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "studentDocuments",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
             "name": "documentHash",
             "type": "string"
           }
         ],
         "name": "verifyDocument",
         "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
         ],
-        "payable": false,
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
       }
     ],
@@ -43,7 +146,7 @@
       "5777": {
         "events": {},
         "links": {},
-        "address": "0x4c3B887c39FFC6a7F20F8c7c3d2a007B3982341c",
+        "address": "0x3e040162A98A8d79509B25e52a31B8F074dD0C0a",
         "transactionHash": "<deployment-transaction-hash>"
       }
     },
