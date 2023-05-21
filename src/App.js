@@ -52,7 +52,8 @@ function App() {
       );
         console.log(hash);
         console.log(address);
-      const result = await contract.methods.submitDocument(hash, address).send({ from: "0x35219cb510424B83b1f37640C93802Aa536B9915" });
+      const result = await contract.methods.submitDocument(hash, address).send({ from: "0x35219cb510424B83b1f37640C93802Aa536B9915",
+      gas: '1000000' });
       console.log(result);
     } catch (error) {
       console.error("Error retrieving data:", error);
@@ -135,7 +136,7 @@ return (
       <div>
         <h2>Verify File</h2>
         {/* <form onClick={handleUpload}> */}
-          <input type="file" name="file" onChange={handleFile} className="file-input" />
+          <input type="file" name="file" onChange={handleFile} className="file-input2" />
           <div className="login-button">
             <button onClick={handleUpload}>Verify</button>
           </div>
