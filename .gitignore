@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/solidity/artifacts
+
 # testing
 /coverage
 
