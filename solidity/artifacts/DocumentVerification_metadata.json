@@ -1,0 +1,186 @@
+{
+	"compiler": {
+		"version": "0.8.0+commit.c7dfd78e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "documents",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "studentAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "revoked",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "studentAddress",
+						"type": "address"
+					}
+				],
+				"name": "getStudentsDocs",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "documentHash",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "revoked",
+						"type": "bool"
+					}
+				],
+				"name": "revokeDocument",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "studentDocuments",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "documentHash",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "studentAddress",
+						"type": "address"
+					}
+				],
+				"name": "submitDocument",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "documentHash",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "updateHash",
+						"type": "string"
+					}
+				],
+				"name": "updateDocument",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "documentHash",
+						"type": "string"
+					}
+				],
+				"name": "verifyDocument",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"DocumentVerification.sol": "DocumentVerification"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"DocumentVerification.sol": {
+			"keccak256": "0x47af8a0456976d183f965ddd4f491be5af215c4e6208ac6fa01d6b44d2c4984e",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://2aab0cd032f95854f6a1168c7e44f5360650b172135a665b5e7a0d77b9626c17",
+				"dweb:/ipfs/QmeYbxUU8hQFnYqjyAB5hpoPTgtwqMUD7sZ6kv4RkoTea1"
+			]
+		}
+	},
+	"version": 1
+}

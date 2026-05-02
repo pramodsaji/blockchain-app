@@ -9,7 +9,7 @@ function App() {
   const [sid, setSID] = useState("");
   const [address, setAddress] = useState("");
 
-  var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+  var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
   const handleSIDChange = (event) => {
     setSID(event.target.value);
@@ -43,7 +43,7 @@ function App() {
       );
 
       const result = await contract.methods.submitDocument(hash, address).send({
-        from: "0xf70c0B4CeaBAfCDbef68F853F19bC6E125D063eA",
+        from: "0xccF291212506dd01901fA6957B9254a74c290507",
         gas: "1000000",
       });
       if (result.transactionHash) alert("Document added successfully");
@@ -88,6 +88,7 @@ function App() {
       deployedNetwork && deployedNetwork.address
     );
     const result = await contract.methods.verifyDocument(hash).call();
+    alert(result);
     if (result) alert("Document is available and verified");
     else alert("Document is not available");
   };
@@ -127,14 +128,14 @@ function App() {
                     onChange={(e) => setAddress(e.target.value)}
                   >
                     <option value="">Select an address</option>
-                    <option value="0xDF94C0d81C174ba46c13789e39fb62D51bAa8732">
-                      0xDF94C0d81C174ba46c13789e39fb62D51bAa8732
+                    <option value="0x514cb49891A27EFE69412BE238573611A6aE21aD">
+                      0x514cb49891A27EFE69412BE238573611A6aE21aD
                     </option>
-                    <option value="0x778f86cc3c3636c810173592774368B95c773249">
-                      0x778f86cc3c3636c810173592774368B95c773249
+                    <option value="0x012485F318f5987c700344550061111615d7f8b1">
+                      0x012485F318f5987c700344550061111615d7f8b1
                     </option>
-                    <option value="0xc79b2800e254F9d778Aed1ef18f59F750E34C36f">
-                      0xc79b2800e254F9d778Aed1ef18f59F750E34C36f
+                    <option value="0xA50AB4b907220830431CECE5A9Fe3a187c713bd2">
+                      0xA50AB4b907220830431CECE5A9Fe3a187c713bd2
                     </option>
                   </select>
                 </td>
